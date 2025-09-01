@@ -18,20 +18,20 @@
  box-sizing: border-box;
 
 }
+
 html,body{
-    height: 100%;
+    min-height: 100vh;
     background-image: url("../img/giffundo.gif");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    font-family: sans-serif;
-    color: #000000;
-
+    background-attachment: fixed; /*mantem o gif visivel ao rolar*/
 }
 a{
     color: inherit;
     text-decoration: none;
 }
+
 a:hover{
     text-decoration: underline;
     color: var(--text-bar-cor);
@@ -52,7 +52,7 @@ section{
     backdrop-filter: blur(12px);
     border: 2px solid var(--primeira-cor);
     border-radius: 20px;
-    padding: 7.2em 2.5em 4em 2.5em;
+    padding: 7.2em 2.5em 1em 2.5em;
     color: var(--primeira-cor);
     box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.2); /*x,y,borrao da sombra, tamanho da sombra*/
 }
@@ -111,24 +111,30 @@ h1{ /*Login*/
 .input-login {
     position: relative; /* ícone fica dentro do input correspondente */
     margin-bottom: 30px;
-    display: block;
 }
 
 .remember-forgot{
     display: flex;
     justify-content: space-between;
     font-size: 15px;
-    position: relative;
-    bottom: 35px;
+    flex-wrap: wrap;
     font-family: "jersey 10", serif;
-    font-size: 16px;
+    margin-bottom: 100px;
 }
+
+@media screen and (max-width: 400px){
+    .remember-forgot{
+        flex-direction: column; /* empilha checkbox e link */
+        align-items: flex-start;
+    }
+    .remember-forgot .forgot{
+        margin-top: 5px; /* pequeno espaçamento entre checkbox e link */
+    }
+}
+
 .input-submit{ /*Botão de Entrar/Login*/
     width: 50%;
     height: 40px;
-    position: relative;
-    bottom: 10px;
-    left: 85px;
     cursor: pointer;
     border: none;
     border-radius: 30px;
@@ -136,6 +142,12 @@ h1{ /*Login*/
     font-size: 20px;
     color: var(--segunda-cor);
 
+}
+
+.input-box{
+    display: flex;
+    justify-content: center; /* centraliza horizontalmente */
+    transform: translateY(-10px);
 }
 
 .input-submit:hover{
